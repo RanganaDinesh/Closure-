@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <h1>Handson Closure Day 1</h1>
+          <h3>Q1.
+          "    function counter(){
+          var counter = 0;
+
+          function IncreaseCounter() {
+          return counter += 1;
+          };
+
+          return IncreaseCounter;
+          }
+
+          var counter = counter();
+          alert(counter());
+          alert(counter());
+          alert(counter());
+          alert(counter());"
+          </h3>
+          <pre>
+          function counter(){
+          let counter = 0;
+
+          function IncreaseCounter() {
+          return counter += 1;
+          };
+
+          return IncreaseCounter;
+          }
+
+          var counter = counter();
+          console.log(counter());// output :1
+          console.log(counter());// output :2
+          console.log(counter());// output :3
+          console.log(counter());// output :4
+          </pre>
+          <h3>Q2.
+          "let count = 0;
+          (function () {
+          if (count === 0) {
+          let count = 1;
+          console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+          })();"
+          </h3>
+          <pre>
+          var count = 0;
+          (function () {
+          if (count === 0) {
+          var count = 1;
+          console.log(count); // output : 1
+          }
+          console.log(count); // output : 0
+          })();
+          </pre>
+          <h3>Q3.
+          "for (var i = 0; i < 3; i++) {
+          setTimeout(function log() {
+          console.log(i); // What is logged?
+          }, 1000);
+          }"
+          </h3>
+          <pre>
+          for (var i = 0; i < 3; i++) {
+          setTimeout(function log() {
+          console.log(i); // What is logged?
+          }, 1000);
+          }
+          output : 3
+          output : 3
+          output : 3
+          </pre>
+
+          <h3>
+          Q4.Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.
+          </h3>
+          <pre>
+          function calculateArea(length) {
+          return function(breadth) {
+          return length * breadth;
+          }
+          }
+
+          const area = calculateArea(5);
+          console.log(area(2)); // Output: 10
+
+          </pre>
+          <h3>Q5.Take a variable in outer function and create an inner function to increase the counter every time it is called
+
+          </h3>
+          <pre>
+          function outerFunction() {
+          let counter = 0;
+          return function innerFunction() {
+          counter++;
+          return counter;
+          }
+          }
+
+          const myFunction = outerFunction();
+          console.log(myFunction()); // Output: 1
+          console.log(myFunction()); // Output: 2
+          console.log(myFunction()); // Output: 3
+
+          </pre>
+          <h3>Q6.var a = 12;
+          (function () {
+          console.log(a);
+
+          })();
+
+          </h3>
+          <pre>
+          var a = 12;
+          (function () {
+          console.log(a);
+
+          })();
+          output : 12
+          </pre>
+          <h3>Q7."var a = 10;
+          var x = (function () {
+          var a = 12;
+          return function () {
+          alert(a);
+          };
+          })();
+          x();"</h3>
+          <pre>
+          var x = (function () {
+          var a = 12;
+          return function () {
+          console.log(a);
+          };
+          })();
+          x(); // output : 12 
+          </pre>
+          <h3>Q8.
+          "var globalVar = ""xyz"";
+
+          (function outerFunc(outerArg) {
+          var outerVar = 'a';
+
+          (function innerFunc(innerArg) {
+          var innerVar = 'b';
+
+          console.log(
+          ""outerArg = "" + outerArg + ""\n"" +
+          ""innerArg = "" + innerArg + ""\n"" +
+          ""outerVar = "" + outerVar + ""\n"" +
+          ""innerVar = "" + innerVar + ""\n"" +
+          ""globalVar = "" + globalVar);
+
+          })(456);
+          })(123);"
+          </h3>
+          <pre>
+          "var globalVar = ""xyz"";
+
+          (function outerFunc(outerArg) {
+          var outerVar = 'a';
+
+          (function innerFunc(innerArg) {
+          var innerVar = 'b';
+
+          console.log(
+          ""outerArg = "" + outerArg + ""\n"" +
+          ""innerArg = "" + innerArg + ""\n"" +
+          ""outerVar = "" + outerVar + ""\n"" +
+          ""innerVar = "" + innerVar + ""\n"" +
+          ""globalVar = "" + globalVar);
+
+          })(456);
+          })(123);"
+          outerAvg = 123
+          outerAvg = 456
+          outerVar = a
+          outerVar = b
+          gl = + xyz
+          </pre>
+</body>
+</html>
